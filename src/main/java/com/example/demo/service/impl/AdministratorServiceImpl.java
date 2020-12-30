@@ -33,8 +33,8 @@ public class AdministratorServiceImpl implements AdministratorService {
     }
 
     @Override
-    public List<Leave_record> SelectAllLeaves() {
-        return administratorMapper.SelectAllLeaves();
+    public List<Leave_record> selectAllLeaves() {
+        return administratorMapper.selectAllLeaves();
     }
 
 

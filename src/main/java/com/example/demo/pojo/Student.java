@@ -1,9 +1,8 @@
 package com.example.demo.pojo;
 
 public class Student {
-    private String Id;
+    private String Student_Id;
     private String Name;
-    private String Password;
     private String Batch;
     private int Age;
     private String DOB;
@@ -11,15 +10,13 @@ public class Student {
     private String Address;
     private String Contact_Number;
     private String Email;
-    private int Leave_taken;
-    private int Leave_balance;
 
     public String getId() {
-        return Id;
+        return Student_Id;
     }
 
     public void setId(String id) {
-        Id = id;
+        Student_Id = id;
     }
 
     public String getName() {
@@ -28,14 +25,6 @@ public class Student {
 
     public void setName(String name) {
         Name = name;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
     }
 
     public String getBatch() {
@@ -92,21 +81,5 @@ public class Student {
 
     public void setEmail(String email) {
         Email = email;
-    }
-
-    public int getLeave_taken() {
-        return Leave_taken;
-    }
-
-    public void setLeave_taken(int leave_taken) {
-        Leave_taken = leave_taken;
-    }
-
-    public int getLeave_balance() {
-        return Leave_balance;
-    }
-
-    public void setLeave_balance(int leave_balance) {
-        Leave_balance = leave_balance;
     }
 }

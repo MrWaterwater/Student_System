@@ -25,5 +25,6 @@ create table record(
 create table information(
                             student_id varchar(40) primary key not null ,
                             leave_taken int default 0,
-                            leave_balance int not null
-)
+                            leave_balance int,
+                            foreign key id(student_id) references student(student_id)
+);

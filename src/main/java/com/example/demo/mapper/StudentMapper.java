@@ -1,11 +1,13 @@
 package com.example.demo.mapper;
 
 import com.example.demo.pojo.Student;
-import org.springframework.stereotype.Component;
+import org.apache.ibatis.annotations.Mapper;
 
-@Component
+
+@Mapper
 public interface StudentMapper {
     Student seeDetail(String Id);
+
     void editDetail(String Id);
     void applyLeave();
 }

@@ -10,5 +10,5 @@ public interface AdministratorService {
     void deleteStudent(String Id);
     void updateStudent(String Id);
     List<Student> selectAllStudents();
-    List<Leave_record> SelectAllLeaves();
+    List<Leave_record> selectAllLeaves();
 }
