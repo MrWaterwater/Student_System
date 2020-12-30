@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.StudentMapper">
+    <select id="seeDetail" parameterType="String" resultType="com.example.demo.pojo.Student">
+        select  * from student where student_id = #{id};
+    </select>
+    <update id="editDetail" parameterType="com.example.demo.pojo.Student">
+        update student
+            <trim prefix="set">
+                <if test="age != null"> age = #{age},</if>
+                <if test="blood_group != null"> blood_group = #{blood_group},</if>
+                <if test="address != null"> address = #{address},</if>
+                <if test="contact_number != null"> contact_number = #{contact_number},</if>
+                <if test="email != null"> email = #{email}</if>
+            </trim>
+        where student_id = #{student_id};
+    </update>
+    <insert id="apply" parameterType="com.example.demo.pojo.Leave_record">
+        insert into record value (#{student_Id},#{leave_time},#{reason});
+    </insert>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.AdministratorMapper">
+    <insert id="addStudent" parameterType="com.example.demo.pojo.Student">
+        insert into student value (#{student_id},#{name},#{batch},#{age},#{dob},#{blood_group},#{address},#{contact_number},#{email});
+    </insert>
+    <delete id="deleteStudent" parameterType="String">
+        delete from student where student_id = #{id};
+    </delete>
+    <update id="updateStudent" parameterType="com.example.demo.pojo.Student">
+        update student
+        <trim prefix="set">
+            <if test="batch != null"> batch = #{batch},</if>
+            <if test="age != null"> age = #{age},</if>
+            <if test="dob != null"> dob = #{dob},</if>
+            <if test="blood_group != null"> blood_group = #{blood_group},</if>
+            <if test="address != null"> address = #{address},</if>
+            <if test="contact_number != null"> contact_number = #{contact_number},</if>
+            <if test="email != null"> email = #{email}</if>
+        </trim>
+        where student_id = #{student_id};
+    </update>
+
+    <select id="selectAllStudents" resultType="com.example.demo.pojo.Student">
+        select * from student;
+    </select>
+    <select id="selectAllLeaves" resultType="com.example.demo.pojo.Leave_record">
+        select * from record;
+    </select>
+</mapper>
