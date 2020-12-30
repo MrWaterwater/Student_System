@@ -3,9 +3,9 @@
 - [x] SpringBoot
 - [ ] Ajax
 - [ ] jQuery
-- [ ] SpringMVC
+- [x] SpringMVC
 - [ ] RESTFul
-- [ ] Mybatis
+- [x] Mybatis
 - [ ] BootStrap
 
 数据库语句在res目录下
