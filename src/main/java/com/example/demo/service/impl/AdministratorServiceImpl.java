@@ -5,7 +5,6 @@ import com.example.demo.pojo.Leave_record;
 import com.example.demo.pojo.Student;
 import com.example.demo.service.AdministratorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,22 +19,22 @@ public class AdministratorServiceImpl implements AdministratorService {
 
     @Override
     public void deleteStudent(String Id) {
-
+        administratorMapper.deleteStudent(Id);
     }
 
     @Override
     public void updateStudent(String Id) {
-
+        administratorMapper.updateStudent(Id);
     }
 
     @Override
     public List<Student> selectAllStudents() {
-        return null;
+        return administratorMapper.selectAllStudents();
     }
 
     @Override
     public List<Leave_record> SelectAllLeaves() {
-        return null;
+        return administratorMapper.SelectAllLeaves();
     }
 
 

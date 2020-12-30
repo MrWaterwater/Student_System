@@ -2,8 +2,10 @@ package com.example.demo.mapper;
 
 import com.example.demo.pojo.Leave_record;
 import com.example.demo.pojo.Student;
-import java.util.List;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+@Component
 public interface AdministratorMapper {
     void addStudent(Student student);
     void deleteStudent(String Id);

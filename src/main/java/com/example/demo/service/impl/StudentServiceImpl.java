@@ -12,16 +12,16 @@ public class StudentServiceImpl implements StudentService {
     private StudentMapper studentMapper;
     @Override
     public Student seeDetail(String Id) {
-        return null;
+        return studentMapper.seeDetail(Id);
     }
 
     @Override
     public void editDetail(String Id) {
-
+        studentMapper.editDetail(Id);
     }
 
     @Override
     public void applyLeave() {
-
+        studentMapper.applyLeave();
     }
 }
