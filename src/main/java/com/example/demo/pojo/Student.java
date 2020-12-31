@@ -1,30 +1,33 @@
 package com.example.demo.pojo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Student {
-    private String Student_Id;
-    private String Name;
+    private String student_id;
+    private String name;
     private String Batch;
-    private int Age;
-    private String DOB;
-    private String Blood_Group;
-    private String Address;
-    private String Contact_Number;
-    private String Email;
+    private int age;
+    private String dob;
+    private String blood_group;
+    private String address;
+    private String contact_number;
+    private String email;
 
     public String getId() {
-        return Student_Id;
+        return student_id;
     }
 
     public void setId(String id) {
-        Student_Id = id;
+        student_id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getBatch() {
@@ -35,51 +38,51 @@ public class Student {
         Batch = batch;
     }
 
-    public int getAge() {
-        return Age;
+    public int getage() {
+        return age;
     }
 
-    public void setAge(int age) {
-        Age = age;
+    public void setage(int age) {
+        this.age = age;
     }
 
     public String getDOB() {
-        return DOB;
+        return dob;
     }
 
     public void setDOB(String DOB) {
-        this.DOB = DOB;
+        this.dob = DOB;
     }
 
-    public String getBlood_Group() {
-        return Blood_Group;
+    public String getBlood_group() {
+        return blood_group;
     }
 
-    public void setBlood_Group(String blood_Group) {
-        Blood_Group = blood_Group;
+    public void setBlood_group(String blood_group) {
+        this.blood_group = blood_group;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
-    public String getContact_Number() {
-        return Contact_Number;
+    public String getContact_number() {
+        return contact_number;
     }
 
-    public void setContact_Number(String contact_Number) {
-        Contact_Number = contact_Number;
+    public void setContact_number(String contact_number) {
+        this.contact_number = contact_number;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 }

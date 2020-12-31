@@ -1,17 +1,19 @@
 package com.example.demo.pojo;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class Information {
-    private String studentId;
+    private String student_id;
     private int leave_taken;
     private int leave_balance;
 
-    public String getStudentId() {
-        return studentId;
+    public String getStudent_id() {
+        return student_id;
     }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
+    public void setStudent_id(String student_id) {
+        this.student_id = student_id;
     }
 
     public int getLeave_taken() {

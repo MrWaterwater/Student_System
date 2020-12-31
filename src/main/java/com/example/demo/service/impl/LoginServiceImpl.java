@@ -15,4 +15,14 @@ public class LoginServiceImpl implements LoginService {
     public Login login(String Id) {
         return loginMapper.login(Id);
     }
+
+    @Override
+    public void editLogin(Login login) {
+        loginMapper.editLogin(login);
+    }
+
+    @Override
+    public void add(Login login) {
+        loginMapper.add(login);
+    }
 }

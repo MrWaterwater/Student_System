@@ -8,8 +8,12 @@ import java.util.List;
 @Mapper
 public interface AdministratorMapper {
     void addStudent(Student student);
+    void addInformation(String Id);
     void deleteStudent(String Id);
-    void updateStudent(String Id);
+    void deleteLogin(String Id);
+    void deleteRecord(String Id);
+    void deleteInformation(String Id);
+    void updateStudent(Student student);
     List<Student> selectAllStudents();
     List<Leave_record> selectAllLeaves();
 }

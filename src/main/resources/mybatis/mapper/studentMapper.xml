@@ -18,7 +18,10 @@
             </trim>
         where student_id = #{student_id};
     </update>
-    <insert id="apply" parameterType="com.example.demo.pojo.Leave_record">
-        insert into record value (#{student_Id},#{leave_time},#{reason});
+    <insert id="applyLeave" parameterType="com.example.demo.pojo.Leave_record">
+        insert into record value (#{student_id},#{leave_time},#{reason});
     </insert>
+    <update id="updateInformation" parameterType="String">
+        update information set leave_taken = leave_taken+1,leave_balance=leave_balance-1 where student_id=#{student_id};
+    </update>
 </mapper>

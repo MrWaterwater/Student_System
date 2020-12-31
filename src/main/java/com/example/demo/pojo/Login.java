@@ -1,22 +1,25 @@
 package com.example.demo.pojo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Login {
-    private String login_Id;
+    private String login_id;
     private String password;
 
-    public String getLoginId() {
-        return login_Id;
+    public String getlogin_id() {
+        return login_id;
     }
 
-    public void setLoginId(String loginId) {
-        this.login_Id = loginId;
+    public void setlogin_id(String loginId) {
+        this.login_id = loginId;
     }
 
-    public String getPassword() {
+    public String getpassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setpassword(String password) {
         this.password = password;
     }
 }

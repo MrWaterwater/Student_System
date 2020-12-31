@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.mapper.StudentMapper;
+import com.example.demo.pojo.Leave_record;
 import com.example.demo.pojo.Student;
 import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,17 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void editDetail(String Id) {
-        studentMapper.editDetail(Id);
+    public void editDetail(Student student) {
+        studentMapper.editDetail(student);
     }
 
     @Override
-    public void applyLeave() {
-        studentMapper.applyLeave();
+    public void applyLeave(Leave_record record) {
+        studentMapper.applyLeave(record);
+    }
+
+    @Override
+    public void updateInformation(String Id) {
+        studentMapper.updateInformation(Id);
     }
 }

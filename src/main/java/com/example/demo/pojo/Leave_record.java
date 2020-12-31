@@ -1,33 +1,35 @@
 package com.example.demo.pojo;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
-
+@Component
 public class Leave_record {
-    private String student_Id;
+    private String student_id;
     private Date leave_time;
-    private String Reason;
+    private String reason;
 
-    public String getStudent_Id() {
-        return student_Id;
+    public String getstudent_Id() {
+        return student_id;
     }
 
-    public void setStudent_Id(String student_Id) {
-        this.student_Id = student_Id;
+    public void setstudent_id(String student_id) {
+        this.student_id = student_id;
     }
 
-    public Date getLeave_time() {
+    public Date getleave_time() {
         return leave_time;
     }
 
-    public void setLeave_time(Date leave_time) {
+    public void setleave_time(Date leave_time) {
         this.leave_time = leave_time;
     }
 
-    public String getReason() {
-        return Reason;
+    public String getreason() {
+        return reason;
     }
 
-    public void setReason(String reason) {
-        Reason = reason;
+    public void setreason(String reason) {
+        this.reason = reason;
     }
 }
