@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.LoginMapper">
-    <select id="login" resultType="com.example.demo.pojo.Login" parameterType="String">
-        select * from login where login_id = #{id}
+    <select id="login" resultType="com.example.demo.pojo.Login">
+        select * from login ;
     </select>
     <update id="editLogin" parameterType="com.example.demo.pojo.Login">
         update login set password = #{password} where login_id = #{login_id};

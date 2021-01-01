@@ -8,8 +8,11 @@ import com.example.demo.service.impl.AdministratorServiceImpl;
 import com.example.demo.service.impl.LoginServiceImpl;
 import com.example.demo.service.impl.StudentServiceImpl;
 import io.swagger.annotations.ApiOperation;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
@@ -35,6 +38,7 @@ public class StudentController {
     @ApiOperation("修改学生信息接口")
     @RequestMapping("/studentUpdate")
     public String update(){
+
         student.setId("stu4");
         student.setName("学生4");
         student.setBatch("大数据4班");
@@ -52,8 +56,9 @@ public class StudentController {
     }
     @ApiOperation("查看学生详细信息接口")
     @RequestMapping("/detail")
-    public String detail(){
-        student = studentService.seeDetail("stu4");
+    public String detail(@RequestParam("ID")String Id) throws JSONException {
+        student = studentService.seeDetail(Id);
+        JSONObject jsonObject;
         return student.toString();
     }
     @ApiOperation("申请请假接口")
@@ -68,4 +73,5 @@ public class StudentController {
         studentService.updateInformation(information.getStudent_id());
         return "succeed";
     }
+
 }

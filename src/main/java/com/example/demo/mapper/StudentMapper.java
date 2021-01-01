@@ -10,5 +10,6 @@ public interface StudentMapper {
     Student seeDetail(String Id);
     void editDetail(Student student);
     void applyLeave(Leave_record record);
+
     void updateInformation(String Id);
 }

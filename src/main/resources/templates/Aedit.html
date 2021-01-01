@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- xmlns:th="http://www.thymeleaf.org" 命名空间 -->
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>管理学生界面</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link th:href="@{webjars/bootstrap/3.3.7/css/bootstrap.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="webjars/jquery/jquery.js"></script>
+    <script src="webjars/bootstrap/js/bootstrap.js"></script>
+    <style>
+        .m{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+<form action="/delete" method="post">
+<input type="text" placeholder="The Id you want to delete." name="dID"><button type="submit" class="btn btn-danger m" >Delete</button>
+</form>
+<br>
+<div class="col-lg-6">
+<form method="post" action="/add" style="margin: 20px;" >
+    <input type="text" placeholder="Id" name="aId"><br>
+    <input type="text" placeholder="Name" name="aName"><br>
+    <input type="text" placeholder="Password" name="apassword"><br>
+    <input type="text" placeholder="Batch" name="aBatch"><br>
+    <input type="text" placeholder="Age" name="aAge"><br>
+    <input type="text" placeholder="Dob" name="aDob"><br>
+    <input type="text" placeholder="Blood_Group" name="aBlood"><br>
+    <input type="text" placeholder="Address" name="aAddress"><br>
+    <input type="text" placeholder="Contact_Number" name="aNumber"><br>
+    <input type="text" placeholder="Email" name="aEmail"><br>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+</div><div class="col-lg-6">
+    <form method="post" action="/update" style="margin: 20px;" >
+        <input type="text" placeholder="Id" name="eId"><br>
+        <input type="text" placeholder="Name" name="eName"><br>
+        <input type="text" placeholder="Batch" name="eBatch"><br>
+        <input type="text" placeholder="Age" name="eAge"><br>
+        <input type="text" placeholder="Dob" name="eDob"><br>
+        <input type="text" placeholder="Blood_Group" name="eBlood"><br>
+        <input type="text" placeholder="Address" name="eAddress"><br>
+        <input type="text" placeholder="Contact_Number" name="eNumber"><br>
+        <input type="text" placeholder="Email" name="eEmail"><br>
+        <button type="submit" class="btn btn-primary">edit</button>
+    </form>
+</div>
+</body>
+</html>

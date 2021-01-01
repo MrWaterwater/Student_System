@@ -10,6 +10,7 @@ import com.example.demo.service.impl.StudentServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -31,64 +32,72 @@ public class AdministratorController {
 
     @ApiOperation("删除学生接口")
     @RequestMapping("/delete")
-    public String delete(){
-        administratorService.deleteRecord("stu4");
-        administratorService.deleteLogin("stu4");
-        administratorService.deleteInformation("stu4");
-        administratorService.deleteStudent("stu4");
-        return "succeed";
+    public void delete(@RequestParam("dID")String Id){
+        administratorService.deleteRecord(Id);
+        administratorService.deleteLogin(Id);
+        administratorService.deleteInformation(Id);
+        administratorService.deleteStudent(Id);
     }
 
     @ApiOperation("新增学生接口")
     @RequestMapping("/add")
-    public String add(){
-        student.setId("stu4");
-        student.setName("学生4");
-        student.setBatch("大数据4班");
-        student.setage(19);
-        student.setDOB("无");
-        student.setEmail("asdlfkj@qq.com");
-        student.setBlood_group("O");
-        student.setContact_number("132141234");
-        student.setAddress("海南");
-        login.setlogin_id("stu4");
-        login.setpassword("ceshipwd");
-        information.setStudent_id("stu4");
+    public String add(@RequestParam("aId")String Id,@RequestParam("aName")String Name,
+                    @RequestParam("apassword")String Password,@RequestParam("aBatch")String Batch,
+                    @RequestParam("aAge")int Age,@RequestParam("aDob")String Dob,
+                    @RequestParam("aBlood")String Blood,@RequestParam("aAddress")String Address,
+                    @RequestParam("aNumber")String Number,@RequestParam("aEmail")String Email){
+        student.setId(Id);
+        student.setName(Name);
+        student.setBatch(Batch);
+        student.setage(Age);
+        student.setDOB(Dob);
+        student.setEmail(Email);
+        student.setBlood_group(Blood);
+        student.setContact_number(Number);
+        student.setAddress(Address);
+        login.setlogin_id(Id);
+        login.setpassword(Password);
+        information.setStudent_id(Id);
         information.setLeave_taken(0);
         information.setLeave_balance(5);
         administratorService.addStudent(student);
         loginService.add(login);
         administratorService.addInformation(information.getStudent_id());
-        return "succeed";
+        return "Aedit";
     }
 
     @ApiOperation("查询学生所有接口")
     @RequestMapping("queryStudent")
-    public String queryAllStudent(){
+    public List<Student> queryAllStudent(){
         List<Student> studentList = administratorService.selectAllStudents();
-        return studentList.toString();
+        return studentList;
     }
 
     @ApiOperation("查询请假记录接口")
     @RequestMapping("queryRecord")
-    public String queryAllRecord(){
+    public List<Leave_record> queryAllRecord(){
         List<Leave_record> records = administratorService.selectAllLeaves();
-        return records.toString();
+        return records;
     }
 
     @ApiOperation("修改学生信息接口")
     @RequestMapping("/update")
-    public String update(){
-        student.setId("stu4");
-        student.setName("学生4");
-        student.setBatch("大数据4班");
-        student.setage(19);
-        student.setDOB("无");
-        student.setEmail("asdlfkj@qq.com");
-        student.setBlood_group("O");
-        student.setContact_number("132141234");
-        student.setAddress("海南");
+    public String update(@RequestParam("eId")String ID,@RequestParam("eName")String Name,
+                         @RequestParam("eBatch")String Batch,
+                         @RequestParam("eAge")int Age,@RequestParam("eDob")String Dob,
+                         @RequestParam("eBlood")String Blood,@RequestParam("eAddress")String Address,
+                         @RequestParam("eNumber")String Number,@RequestParam("eEmail")String Email){
+        student.setId(ID);
+        student.setName(Name);
+        student.setBatch(Batch);
+        student.setage(Age);
+        student.setDOB(Dob);
+        student.setEmail(Email);
+        student.setBlood_group(Blood);
+        student.setContact_number(Number);
+        student.setAddress(Address);
+        login.setlogin_id(ID);
         administratorService.updateStudent(student);
-        return "succeed";
+        return "Aedit";
     }
 }

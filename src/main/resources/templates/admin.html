@@ -1,10 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- xmlns:th="http://www.thymeleaf.org" 命名空间 -->
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>管理员页面</title>
+    <title>管理员界面</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link th:href="@{webjars/bootstrap/3.3.7/css/bootstrap.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="webjars/jquery/jquery.js"></script>
+    <script src="webjars/bootstrap/js/bootstrap.js"></script>
+    <style>
+    </style>
+    <script type="text/javascript">
+        function clearS(){
+            document.getElementById("showStudent").innerHTML="";
+        }
+        function clearR(){
+            document.getElementById("showRecord").innerHTML="";
+        }
+        function getRecord() {
+            $.ajax({
+                type:"get",
+                url:"/queryRecord",
+                dataType:"json",
+                async: false,
+                success:function (data) {
+                    var str="";
+                    for (i in data) {
+                        str += "<tr>" +
+                            "<td align='center'>" + data[i].student_Id + "</td>" +
+                            "<td align='center'>" + data[i].leave_time + "</td>" +
+                            "<td align='center'>" + data[i].reason + "</td>" +
+                            "<td>\n" +
+                            "</td>"
+                        "</tr>";
+                    }
+
+                    document.getElementById("showRecord").innerHTML=str;
+
+                }
+            });
+        }
+        function getStudent(){
+            $.ajax({
+                type:"get",
+                url:"/queryStudent",
+                dataType:"json",
+                async: false,
+                success:function (data) {
+                    var str="";
+                    for (i in data) {
+                        str += "<tr>" +
+                            "<td align='center'>" + data[i].id + "</td>" +
+                            "<td align='center'>" + data[i].name + "</td>" +
+                            "<td align='center'>" + data[i].age + "</td>" +
+                            "<td align='center'>" + data[i].batch+ "</td>" +
+                            "<td align='center'>" + data[i].blood_group + "</td>" +
+                            "<td align='center'>" + data[i].address + "</td>" +
+                            "<td align='center'>" + data[i].dob + "</td>" +
+                            "<td align='center'>" + data[i].contact_number + "</td>" +
+                            "<td align='center'>" + data[i].email + "</td>" +
+                            "<td>\n" +
+                            "</td>"
+                        "</tr>";
+                    }
+
+                    document.getElementById("showStudent").innerHTML=str;
+
+                }
+            });
+        }
+    </script>
 </head>
 <body>
-管理员页
+<div class="contain">
+    <div style="text-align: center">
+        <form action="Aedit.html">
+            <button class="btn btn-info">manage Student</button>
+        </form>
+        <button class="btn btn-info" onclick="getStudent()" style="margin: 20px">Query Student</button>
+        <button class="btn btn-info" onclick="getRecord()" style="margin: 20px;">Query Record</button>
+    </div>
+
+
+<div style="text-align: center">
+    <label>ShowStudent</label><button class="btn btn-primary" style="margin: 20px" onclick="clearS()">ClearStudent</button>
+    <table id="showStudent" class="table table-striped"></table>
+    <label>ShowRecord</label><button class="btn btn-primary" style="margin: 20px" onclick="clearR()">ClearRecord</button>
+    <table id="showRecord" class="table table-striped"></table>
+</div>
+</div>
+
 </body>
 </html>
