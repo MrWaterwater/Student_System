@@ -7,6 +7,7 @@ import com.example.demo.pojo.Student;
 import com.example.demo.service.impl.AdministratorServiceImpl;
 import com.example.demo.service.impl.LoginServiceImpl;
 import com.example.demo.service.impl.StudentServiceImpl;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +28,8 @@ public class AdministratorController {
     private Login login;
     @Autowired
     private Information information;
+
+    @ApiOperation("删除学生接口")
     @RequestMapping("/delete")
     public String delete(){
         administratorService.deleteRecord("stu4");
@@ -35,39 +38,45 @@ public class AdministratorController {
         administratorService.deleteStudent("stu4");
         return "succeed";
     }
+
+    @ApiOperation("新增学生接口")
     @RequestMapping("/add")
     public String add(){
-//        student.setId("stu4");
-//        student.setName("学生4");
-//        student.setBatch("大数据4班");
-//        student.setage(19);
-//        student.setDOB("无");
-//        student.setEmail("asdlfkj@qq.com");
-//        student.setBlood_group("O");
-//        student.setContact_number("132141234");
-//        student.setAddress("海南");
-//        login.setlogin_id("stu4");
-//        login.setpassword("ceshipwd");
+        student.setId("stu4");
+        student.setName("学生4");
+        student.setBatch("大数据4班");
+        student.setage(19);
+        student.setDOB("无");
+        student.setEmail("asdlfkj@qq.com");
+        student.setBlood_group("O");
+        student.setContact_number("132141234");
+        student.setAddress("海南");
+        login.setlogin_id("stu4");
+        login.setpassword("ceshipwd");
         information.setStudent_id("stu4");
         information.setLeave_taken(0);
         information.setLeave_balance(5);
-//        administratorService.addStudent(student);
-//        loginService.add(login);
+        administratorService.addStudent(student);
+        loginService.add(login);
         administratorService.addInformation(information.getStudent_id());
         return "succeed";
     }
 
+    @ApiOperation("查询学生所有接口")
     @RequestMapping("queryStudent")
     public String queryAllStudent(){
         List<Student> studentList = administratorService.selectAllStudents();
         return studentList.toString();
     }
+
+    @ApiOperation("查询请假记录接口")
     @RequestMapping("queryRecord")
     public String queryAllRecord(){
         List<Leave_record> records = administratorService.selectAllLeaves();
         return records.toString();
     }
 
+    @ApiOperation("修改学生信息接口")
     @RequestMapping("/update")
     public String update(){
         student.setId("stu4");

@@ -1,12 +1,18 @@
 package com.example.demo.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 @Component
+@ApiModel("离开记录实体")
 public class Leave_record {
+    @ApiModelProperty("学生Id")
     private String student_id;
+    @ApiModelProperty("离开时间")
     private Date leave_time;
+    @ApiModelProperty("离开理由")
     private String reason;
 
     public String getstudent_Id() {

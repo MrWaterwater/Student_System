@@ -4,8 +4,12 @@
 - [ ] Ajax
 - [ ] jQuery
 - [x] SpringMVC
-- [ ] RESTFul
+- [x] RESTFul
 - [x] Mybatis
+- [x] swagger
 - [ ] BootStrap
+
+swagger接口试调页面为：
+http://localhost:8080/swagger-ui.html
 
 数据库语句在res目录下

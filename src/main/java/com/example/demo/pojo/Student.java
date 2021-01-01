@@ -1,17 +1,29 @@
 package com.example.demo.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.stereotype.Component;
 
 @Component
+@ApiModel("学生实体")
 public class Student {
+    @ApiModelProperty("学生Id")
     private String student_id;
+    @ApiModelProperty("学生姓名")
     private String name;
+    @ApiModelProperty("学生班级")
     private String Batch;
+    @ApiModelProperty("学生年龄")
     private int age;
+    @ApiModelProperty("学生DOB")
     private String dob;
+    @ApiModelProperty("学生血型")
     private String blood_group;
+    @ApiModelProperty("学生地址")
     private String address;
+    @ApiModelProperty("学生电话")
     private String contact_number;
+    @ApiModelProperty("学生Email")
     private String email;
 
     public String getId() {

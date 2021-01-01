@@ -7,6 +7,7 @@ import com.example.demo.pojo.Student;
 import com.example.demo.service.impl.AdministratorServiceImpl;
 import com.example.demo.service.impl.LoginServiceImpl;
 import com.example.demo.service.impl.StudentServiceImpl;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +32,7 @@ public class StudentController {
     @Autowired
     private Information information;
 
+    @ApiOperation("修改学生信息接口")
     @RequestMapping("/studentUpdate")
     public String update(){
         student.setId("stu4");
@@ -48,11 +50,13 @@ public class StudentController {
         loginService.editLogin(login);
         return "succeed";
     }
+    @ApiOperation("查看学生详细信息接口")
     @RequestMapping("/detail")
     public String detail(){
         student = studentService.seeDetail("stu4");
         return student.toString();
     }
+    @ApiOperation("申请请假接口")
     @RequestMapping("/apply")
     public String apply(){
         Date date = new Date();
