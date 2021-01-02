@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -19,8 +20,6 @@ import java.util.List;
 public class AdministratorController {
     @Autowired
     private AdministratorServiceImpl administratorService;
-    @Autowired
-    private StudentServiceImpl studentService;
     @Autowired
     private LoginServiceImpl loginService;
     @Autowired
@@ -32,20 +31,24 @@ public class AdministratorController {
 
     @ApiOperation("删除学生接口")
     @RequestMapping("/delete")
-    public void delete(@RequestParam("dID")String Id){
+    public ModelAndView delete(@RequestParam("dID")String Id){
+        ModelAndView modelAndView = new ModelAndView();
         administratorService.deleteRecord(Id);
         administratorService.deleteLogin(Id);
         administratorService.deleteInformation(Id);
         administratorService.deleteStudent(Id);
+        modelAndView.setViewName("Aedit");
+        return modelAndView;
     }
 
     @ApiOperation("新增学生接口")
     @RequestMapping("/add")
-    public String add(@RequestParam("aId")String Id,@RequestParam("aName")String Name,
+    public ModelAndView add(@RequestParam("aId")String Id,@RequestParam("aName")String Name,
                     @RequestParam("apassword")String Password,@RequestParam("aBatch")String Batch,
                     @RequestParam("aAge")int Age,@RequestParam("aDob")String Dob,
                     @RequestParam("aBlood")String Blood,@RequestParam("aAddress")String Address,
                     @RequestParam("aNumber")String Number,@RequestParam("aEmail")String Email){
+        ModelAndView modelAndView = new ModelAndView();
         student.setId(Id);
         student.setName(Name);
         student.setBatch(Batch);
@@ -63,7 +66,8 @@ public class AdministratorController {
         administratorService.addStudent(student);
         loginService.add(login);
         administratorService.addInformation(information.getStudent_id());
-        return "Aedit";
+        modelAndView.setViewName("Aedit");
+        return modelAndView;
     }
 
     @ApiOperation("查询学生所有接口")
@@ -82,11 +86,12 @@ public class AdministratorController {
 
     @ApiOperation("修改学生信息接口")
     @RequestMapping("/update")
-    public String update(@RequestParam("eId")String ID,@RequestParam("eName")String Name,
+    public ModelAndView update(@RequestParam("eId")String ID,@RequestParam("eName")String Name,
                          @RequestParam("eBatch")String Batch,
                          @RequestParam("eAge")int Age,@RequestParam("eDob")String Dob,
                          @RequestParam("eBlood")String Blood,@RequestParam("eAddress")String Address,
                          @RequestParam("eNumber")String Number,@RequestParam("eEmail")String Email){
+        ModelAndView modelAndView = new ModelAndView();
         student.setId(ID);
         student.setName(Name);
         student.setBatch(Batch);
@@ -98,6 +103,7 @@ public class AdministratorController {
         student.setAddress(Address);
         login.setlogin_id(ID);
         administratorService.updateStudent(student);
-        return "Aedit";
+        modelAndView.setViewName("Aedit");
+        return modelAndView;
     }
 }

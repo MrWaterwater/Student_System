@@ -5,15 +5,13 @@ import com.example.demo.pojo.Leave_record;
 import com.example.demo.pojo.Login;
 import com.example.demo.pojo.Student;
 import com.example.demo.service.impl.AdministratorServiceImpl;
-import com.example.demo.service.impl.LoginServiceImpl;
 import com.example.demo.service.impl.StudentServiceImpl;
 import io.swagger.annotations.ApiOperation;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
 
@@ -23,8 +21,6 @@ public class StudentController {
     private AdministratorServiceImpl administratorService;
     @Autowired
     private StudentServiceImpl studentService;
-    @Autowired
-    private LoginServiceImpl loginService;
 
     @Autowired
     private Student student;
@@ -37,29 +33,39 @@ public class StudentController {
 
     @ApiOperation("修改学生信息接口")
     @RequestMapping("/studentUpdate")
-    public String update(){
-
-        student.setId("stu4");
-        student.setName("学生4");
-        student.setBatch("大数据4班");
-        student.setage(19);
-        student.setDOB("修改测试");
-        student.setEmail("asdlfkj@qq.com");
-        student.setBlood_group("O");
-        student.setContact_number("132141234");
-        student.setAddress("海南");
-        login.setlogin_id("stu4");
-        login.setpassword("ceshi");
+    public String update(@RequestParam("eId")String ID,@RequestParam("eName")String Name,
+                         @RequestParam("eBatch")String Batch,
+                         @RequestParam("eAge")int Age,@RequestParam("eDob")String Dob,
+                         @RequestParam("eBlood")String Blood,@RequestParam("eAddress")String Address,
+                         @RequestParam("eNumber")String Number,@RequestParam("eEmail")String Email){
+        student.setId(ID);
+        student.setName(Name);
+        student.setBatch(Batch);
+        student.setage(Age);
+        student.setDOB(Dob);
+        student.setEmail(Email);
+        student.setBlood_group(Blood);
+        student.setContact_number(Number);
+        student.setAddress(Address);
         administratorService.updateStudent(student);
-        loginService.editLogin(login);
-        return "succeed";
+        return "succeed!";
     }
     @ApiOperation("查看学生详细信息接口")
     @RequestMapping("/detail")
-    public String detail(@RequestParam("ID")String Id) throws JSONException {
+    public ModelAndView detail(@RequestParam("ID")String Id)  {
+        ModelAndView modelAndView = new ModelAndView();
         student = studentService.seeDetail(Id);
-        JSONObject jsonObject;
-        return student.toString();
+        modelAndView.addObject("Id",student.getId());
+        modelAndView.addObject("Name",student.getName());
+        modelAndView.addObject("Batch",student.getBatch());
+        modelAndView.addObject("Age",student.getage());
+        modelAndView.addObject("Dob",student.getDOB());
+        modelAndView.addObject("Blood",student.getBlood_group());
+        modelAndView.addObject("Address",student.getAddress());
+        modelAndView.addObject("Number",student.getContact_number());
+        modelAndView.addObject("Email",student.getEmail());
+        modelAndView.setViewName("student");
+        return modelAndView;
     }
     @ApiOperation("申请请假接口")
     @RequestMapping("/apply")

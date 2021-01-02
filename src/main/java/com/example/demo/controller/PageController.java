@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -44,13 +45,17 @@ public class PageController {
 
     @ApiOperation("学生登录接口")
     @RequestMapping("/slogin")
-    public String slogin(@RequestParam("Id") String Id,@RequestParam("password") String password ){
+    public ModelAndView slogin(@RequestParam("Id") String Id, @RequestParam("password") String password ){
+        ModelAndView modelAndView = new ModelAndView();
         List<Login> logins = loginService.login();
         for(Login login:logins){
             if(login.getlogin_id().equals(Id) && login.getpassword().equals(password)){
-                return "student";
+                modelAndView.addObject("ID",login.getlogin_id());
+                modelAndView.setViewName("student");
+                return modelAndView;
             }
         }
-        return "index";
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
 }

@@ -98,18 +98,4 @@ public class Student {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "student_id='" + student_id + '\'' +
-                ", name='" + name + '\'' +
-                ", Batch='" + Batch + '\'' +
-                ", age=" + age +
-                ", dob='" + dob + '\'' +
-                ", blood_group='" + blood_group + '\'' +
-                ", address='" + address + '\'' +
-                ", contact_number='" + contact_number + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

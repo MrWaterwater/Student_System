@@ -9,13 +9,15 @@
     </select>
     <update id="editDetail" parameterType="com.example.demo.pojo.Student">
         update student
-            <trim prefix="set">
-                <if test="age != null"> age = #{age},</if>
-                <if test="blood_group != null"> blood_group = #{blood_group},</if>
-                <if test="address != null"> address = #{address},</if>
-                <if test="contact_number != null"> contact_number = #{contact_number},</if>
-                <if test="email != null"> email = #{email}</if>
-            </trim>
+        <trim prefix="set">
+            <if test="batch != null"> batch = #{batch},</if>
+            <if test="age != null"> age = #{age},</if>
+            <if test="dob != null"> dob = #{dob},</if>
+            <if test="blood_group != null"> blood_group = #{blood_group},</if>
+            <if test="address != null"> address = #{address},</if>
+            <if test="contact_number != null"> contact_number = #{contact_number},</if>
+            <if test="email != null"> email = #{email}</if>
+        </trim>
         where student_id = #{student_id};
     </update>
     <insert id="applyLeave" parameterType="com.example.demo.pojo.Leave_record">

@@ -10,32 +10,28 @@
     <script src="webjars/jquery/jquery.js"></script>
     <script src="webjars/bootstrap/js/bootstrap.js"></script>
     <script>
-        function getStudent(){
-            $.ajax({
-                type:"get",
-                url:"/queryStudent",
-                dataType:"json",
-                async: false,
-                success:function (data) {
-                    var str="";
-
-                        str += "<tr>" +
-                            data+
-                            "<td>\n" +
-                            "</td>"
-                        "</tr>";
-                    document.getElementById("showStudent").innerHTML=str;
-
-                }
-            });
+        function miss(){
+            document.getElementById("miss").style.display;
         }
     </script>
 </head>
 <body>
-<div class="contain">
-    <button onclick="getStudent()">get</button>
+<div class="contain" style="text-align: center">
+    <div id="text"></div>
+    <form method="post" action="/detail" ><input name="ID" readonly="readonly" type="text" th:value="${ID}" /><button id="miss" onclick="miss()" type="submit">获取信息</button> </form>
     <div style="text-align: center">
-        <table id="showStudent" class="table table-striped"></table>
+        <form action="/studentUpdate" method="post">
+            <input name="eId" th:value="${Id}" readonly="readonly"><br>
+            <input name="eName" th:value="${Name}" readonly="readonly"><br>
+            <input name="eBatch" th:value="${Batch}" readonly="readonly"><br>
+            <input name="eAge" th:value="${Age}"><br>
+            <input name="eDob" th:value="${Dob}"><br>
+            <input name="eBlood" th:value="${Blood}"><br>
+            <input name="eAddress" th:value="${Address}"><br>
+            <input name="eNumber" th:value="${Number}"><br>
+            <input name="eEmail" th:value="${Email}"><br>
+            <button type="submit">Edit</button>
+        </form>
     </div>
 </div>
 </body>
