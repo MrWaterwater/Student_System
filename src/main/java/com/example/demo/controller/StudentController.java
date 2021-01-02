@@ -6,6 +6,7 @@ import com.example.demo.pojo.Login;
 import com.example.demo.pojo.Student;
 import com.example.demo.service.impl.AdministratorServiceImpl;
 import com.example.demo.service.impl.StudentServiceImpl;
+import com.example.demo.util.DateUtil;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,12 +70,12 @@ public class StudentController {
     }
     @ApiOperation("申请请假接口")
     @RequestMapping("/apply")
-    public String apply(){
+    public String apply(@RequestParam("AId")String id,@RequestParam("reason")String reason){
         Date date = new Date();
-        record.setstudent_id("stu1");
-        record.setreason("ababceshi");
         record.setleave_time(date);
-        information.setStudent_id("stu1");
+        record.setstudent_id(id);
+        record.setreason(reason);
+        information.setStudent_id(id);
         studentService.applyLeave(record);
         studentService.updateInformation(information.getStudent_id());
         return "succeed";

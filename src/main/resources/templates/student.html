@@ -9,28 +9,97 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="webjars/jquery/jquery.js"></script>
     <script src="webjars/bootstrap/js/bootstrap.js"></script>
-    <script>
-        function miss(){
-            document.getElementById("miss").style.display;
+
+    <style>
+        .main{
+            text-align: center; /*让div内部文字居中*/
+            background-color: #fff;
+            border-radius: 20px;
+            width: 600px;
+            height: 350px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
-    </script>
+    </style>
 </head>
 <body>
-<div class="contain" style="text-align: center">
+<div class="contain main" style="text-align: center">
     <div id="text"></div>
-    <form method="post" action="/detail" ><input name="ID" readonly="readonly" type="text" th:value="${ID}" /><button id="miss" onclick="miss()" type="submit">获取信息</button> </form>
-    <div style="text-align: center">
-        <form action="/studentUpdate" method="post">
-            <input name="eId" th:value="${Id}" readonly="readonly"><br>
-            <input name="eName" th:value="${Name}" readonly="readonly"><br>
-            <input name="eBatch" th:value="${Batch}" readonly="readonly"><br>
-            <input name="eAge" th:value="${Age}"><br>
-            <input name="eDob" th:value="${Dob}"><br>
-            <input name="eBlood" th:value="${Blood}"><br>
-            <input name="eAddress" th:value="${Address}"><br>
-            <input name="eNumber" th:value="${Number}"><br>
-            <input name="eEmail" th:value="${Email}"><br>
-            <button type="submit">Edit</button>
+    <form method="post" action="/detail" ><input name="ID" readonly="readonly" type="hidden" th:value="${ID}" /><button class="btn btn-info" id="miss" onclick="miss()" type="submit">获取信息</button> </form>
+    <div style="text-align: center" class="col-lg-6">
+        <form action="/studentUpdate" method="post" class="form-horizontal" style="margin: 20px">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Id</label>
+                <div class="col-sm-4 col-lg-10">
+                    <input class="form-control" name="eId" th:value="${Id}" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-4 col-lg-10">
+                    <input class="form-control" name="eName" th:value="${Name}" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Batch</label>
+                <div class="col-sm-4 col-lg-10">
+                    <input class="form-control" name="eBatch" th:value="${Batch}" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Age</label>
+                <div class="col-sm-4 col-lg-10">
+                    <input class="form-control" name="eAge" th:value="${Age}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Dob</label>
+                <div class="col-sm-4 col-lg-10">
+                    <input class="form-control" name="eDob" th:value="${Dob}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Blood</label>
+                <div class="col-sm-4 col-lg-10">
+                    <input class="form-control" name="eBlood" th:value="${Blood}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Address</label>
+                <div class="col-sm-4 col-lg-10">
+                    <input class="form-control" name="eAddress" th:value="${Address}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Telephone</label>
+                <div class="col-sm-4 col-lg-10">
+                    <input class="form-control" name="eNumber" th:value="${Number}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-4 col-lg-10">
+                    <input class="form-control" name="eEmail" th:value="${Email}">
+                </div>
+            </div>
+
+            <button class="form-control btn-primary" type="submit">Edit</button>
+        </form>
+    </div>
+    <div style="text-align: center;margin-top: 150px" class="col-lg-6" >
+        <form action="/apply" method="post" class="form-horizontal">
+            <input type="hidden" th:value="${Id}" name="AId"/>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Reason</label>
+                <div class="col-sm-4 col-lg-10">
+                    <input type="text" name="reason" class="form-control"><br>
+                </div>
+            </div>
+            <button type="submit" class="form-control col-lg-10 btn btn-primary">Apply</button>
         </form>
     </div>
 </div>
