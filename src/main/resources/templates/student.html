@@ -15,7 +15,7 @@
             text-align: center; /*让div内部文字居中*/
             background-color: #fff;
             border-radius: 20px;
-            width: 600px;
+            width: 1000px;
             height: 350px;
             margin: auto;
             position: absolute;
@@ -29,7 +29,11 @@
 <body>
 <div class="contain main" style="text-align: center">
     <div id="text"></div>
-    <form method="post" action="/detail" ><input name="ID" readonly="readonly" type="hidden" th:value="${ID}" /><button class="btn btn-info" id="miss" onclick="miss()" type="submit">获取信息</button> </form>
+    <form method="post" action="/detail" >
+        <input name="ID" readonly="readonly" type="hidden" th:value="${ID}" />
+        <button class="btn btn-info" type="submit">获取信息</button>
+    </form>
+
     <div style="text-align: center" class="col-lg-6">
         <form action="/studentUpdate" method="post" class="form-horizontal" style="margin: 20px">
             <div class="form-group">

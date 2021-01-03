@@ -34,12 +34,10 @@ public class PageController {
     @ApiOperation("管理员登录接口")
     @RequestMapping("/alogin")
     public String alogin(@RequestParam("Id") String Id,@RequestParam("password") String password ){
-        List<Login> logins = loginService.login();
-        for(Login login:logins){
+         Login login = loginService.alogin();
             if(login.getlogin_id().equals(Id) && login.getpassword().equals(password)){
                 return "admin";
             }
-        }
         return "root";
     }
 

@@ -26,19 +26,18 @@ public class StudentController {
     @Autowired
     private Student student;
     @Autowired
-    private Login login;
-    @Autowired
     private Leave_record record;
     @Autowired
     private Information information;
 
     @ApiOperation("修改学生信息接口")
     @RequestMapping("/studentUpdate")
-    public String update(@RequestParam("eId")String ID,@RequestParam("eName")String Name,
+    public ModelAndView update(@RequestParam("eId")String ID,@RequestParam("eName")String Name,
                          @RequestParam("eBatch")String Batch,
                          @RequestParam("eAge")int Age,@RequestParam("eDob")String Dob,
                          @RequestParam("eBlood")String Blood,@RequestParam("eAddress")String Address,
                          @RequestParam("eNumber")String Number,@RequestParam("eEmail")String Email){
+        ModelAndView modelAndView = new ModelAndView();
         student.setId(ID);
         student.setName(Name);
         student.setBatch(Batch);
@@ -49,7 +48,9 @@ public class StudentController {
         student.setContact_number(Number);
         student.setAddress(Address);
         administratorService.updateStudent(student);
-        return "succeed!";
+        modelAndView.addObject("ID",ID);
+        modelAndView.setViewName("student");
+        return modelAndView;
     }
     @ApiOperation("查看学生详细信息接口")
     @RequestMapping("/detail")
@@ -70,7 +71,8 @@ public class StudentController {
     }
     @ApiOperation("申请请假接口")
     @RequestMapping("/apply")
-    public String apply(@RequestParam("AId")String id,@RequestParam("reason")String reason){
+    public ModelAndView apply(@RequestParam("AId")String id,@RequestParam("reason")String reason){
+        ModelAndView modelAndView = new ModelAndView();
         Date date = new Date();
         record.setleave_time(date);
         record.setstudent_id(id);
@@ -78,7 +80,9 @@ public class StudentController {
         information.setStudent_id(id);
         studentService.applyLeave(record);
         studentService.updateInformation(information.getStudent_id());
-        return "succeed";
+        modelAndView.addObject("ID",id);
+        modelAndView.setViewName("student");
+        return modelAndView;
     }
 
 }

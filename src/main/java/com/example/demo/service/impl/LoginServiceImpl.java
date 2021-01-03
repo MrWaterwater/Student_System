@@ -18,6 +18,11 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
+    public Login alogin() {
+        return loginMapper.alogin();
+    }
+
+    @Override
     public void editLogin(Login login) {
         loginMapper.editLogin(login);
     }

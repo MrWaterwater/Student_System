@@ -10,6 +10,19 @@
     <script src="webjars/jquery/jquery.js"></script>
     <script src="webjars/bootstrap/js/bootstrap.js"></script>
     <style>
+        .main{
+            text-align: center; /*让div内部文字居中*/
+            background-color: #fff;
+            border-radius: 20px;
+            width: 1000px;
+            height: 350px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
     </style>
     <script type="text/javascript">
         function clearS(){
@@ -25,11 +38,17 @@
                 dataType:"json",
                 async: false,
                 success:function (data) {
-                    var str="";
+                    var str="<thead>\n" +
+                        "        <tr>\n" +
+                        "            <td>Student Id</td>\n" +
+                        "            <td>Leave Time</td>\n" +
+                        "            <td>Reason</td>\n" +
+                        "        </tr>\n" +
+                        "        </thead>";
                     for (i in data) {
                         str += "<tr>" +
                             "<td align='center'>" + data[i].student_Id + "</td>" +
-                            "<td align='center'>" + data[i].leave_time + "</td>" +
+                            "<td align='center'>" + data[i].leave_time.toString().substr(0,10) + "</td>" +
                             "<td align='center'>" + data[i].reason + "</td>" +
                             "<td>\n" +
                             "</td>"
@@ -48,7 +67,19 @@
                 dataType:"json",
                 async: false,
                 success:function (data) {
-                    var str="";
+                    var str="<thead>\n" +
+                        "        <tr>\n" +
+                        "            <td>Student Id</td>\n" +
+                        "            <td>Name</td>\n" +
+                        "            <td>Batch</td>\n" +
+                        "            <td>Age</td>\n" +
+                        "            <td>Dob</td>\n" +
+                        "            <td>Blood Group</td>\n" +
+                        "            <td> Address</td>\n" +
+                        "            <td>Contact Number</td>\n" +
+                        "            <td>Email</td>\n" +
+                        "        </tr>\n" +
+                        "        </thead>";
                     for (i in data) {
                         str += "<tr>" +
                             "<td align='center'>" + data[i].id + "</td>" +
@@ -72,7 +103,7 @@
         }
     </script>
 </head>
-<body>
+<body class="main">
 <div class="contain">
     <div style="text-align: center">
         <form action="Aedit.html">
@@ -85,9 +116,13 @@
 
 <div style="text-align: center">
     <label>ShowStudent</label><button class="btn btn-primary" style="margin: 20px" onclick="clearS()">ClearStudent</button>
-    <table id="showStudent" class="table table-striped"></table>
+    <table id="showStudent" class="table table-striped">
+
+    </table>
     <label>ShowRecord</label><button class="btn btn-primary" style="margin: 20px" onclick="clearR()">ClearRecord</button>
-    <table id="showRecord" class="table table-striped"></table>
+    <table id="showRecord" class="table table-striped">
+
+    </table>
 </div>
 </div>
 

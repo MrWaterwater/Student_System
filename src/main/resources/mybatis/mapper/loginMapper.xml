@@ -7,6 +7,9 @@
     <select id="login" resultType="com.example.demo.pojo.Login">
         select * from login ;
     </select>
+    <select id="alogin" resultType="com.example.demo.pojo.Login">
+        select * from login where login_id = "admin";
+    </select>
     <update id="editLogin" parameterType="com.example.demo.pojo.Login">
         update login set password = #{password} where login_id = #{login_id};
     </update>

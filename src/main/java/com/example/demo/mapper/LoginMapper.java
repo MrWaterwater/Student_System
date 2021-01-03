@@ -8,6 +8,7 @@ import java.util.List;
 @Mapper
 public interface LoginMapper {
     List<Login> login();
+    Login alogin();
     void editLogin(Login login);
     void add(Login login);
 }

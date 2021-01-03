@@ -18,7 +18,7 @@
              background-color: #fff;
              border-radius: 20px;
              width: 600px;
-             height: 350px;
+             height: 600px;
              margin: auto;
              position: absolute;
              top: 0;
@@ -30,36 +30,36 @@
 </head>
 <body style="text-align: center">
 <div class="main">
-<form action="/delete" method="post">
-<input type="text" placeholder="The Id you want to delete." name="dID"><button type="submit" class="btn btn-danger m" >Delete</button>
+<form action="/delete" method="post" class="form-inline">
+<input class="form-control" type="text" placeholder="The Id you want to delete." name="dID"><button type="submit" class="btn btn-danger m" >Delete</button>
 </form>
 <br>
 <div class="col-lg-6">
-<form method="post" action="/add" style="margin: 20px;" >
-    <input type="text" placeholder="Id" name="aId"><br>
-    <input type="text" placeholder="Name" name="aName"><br>
-    <input type="text" placeholder="Password" name="apassword"><br>
-    <input type="text" placeholder="Batch" name="aBatch"><br>
-    <input type="text" placeholder="Age" name="aAge"><br>
-    <input type="text" placeholder="Dob" name="aDob"><br>
-    <input type="text" placeholder="Blood_Group" name="aBlood"><br>
-    <input type="text" placeholder="Address" name="aAddress"><br>
-    <input type="text" placeholder="Contact_Number" name="aNumber"><br>
-    <input type="text" placeholder="Email" name="aEmail"><br>
-    <button type="submit" class="btn btn-primary">Add</button>
+<form method="post" class="form-horizontal" action="/add" style="margin: 20px;" >
+    <input type="text" class="form-control" placeholder="Id" name="aId"><br>
+    <input type="text" class="form-control" placeholder="Name" name="aName"><br>
+    <input type="text" class="form-control" placeholder="Password" name="apassword"><br>
+    <input type="text" class="form-control" placeholder="Batch" name="aBatch"><br>
+    <input type="text" class="form-control" placeholder="Age" name="aAge"><br>
+    <input type="text" class="form-control" placeholder="Dob" name="aDob"><br>
+    <input type="text" class="form-control" placeholder="Blood_Group" name="aBlood"><br>
+    <input type="text" class="form-control" placeholder="Address" name="aAddress"><br>
+    <input type="text" class="form-control" placeholder="Contact_Number" name="aNumber"><br>
+    <input type="text" class="form-control" placeholder="Email" name="aEmail"><br>
+    <button type="submit"  class="btn btn-primary">Add</button>
 </form>
 </div>
 <div class="col-lg-6">
-    <form method="post" action="/update" style="margin: 20px;" >
-        <input type="text" placeholder="Id" name="eId"><br>
-        <input type="text" placeholder="Name" name="eName"><br>
-        <input type="text" placeholder="Batch" name="eBatch"><br>
-        <input type="text" placeholder="Age" name="eAge"><br>
-        <input type="text" placeholder="Dob" name="eDob"><br>
-        <input type="text" placeholder="Blood_Group" name="eBlood"><br>
-        <input type="text" placeholder="Address" name="eAddress"><br>
-        <input type="text" placeholder="Contact_Number" name="eNumber"><br>
-        <input type="text" placeholder="Email" name="eEmail"><br>
+    <form method="post" class="form-horizontal" action="/update" style="margin: 20px;" >
+        <input type="text" class="form-control" placeholder="Id" name="eId"><br>
+        <input type="text" class="form-control" placeholder="Name" name="eName"><br>
+        <input type="text" class="form-control" placeholder="Batch" name="eBatch"><br>
+        <input type="text" class="form-control" placeholder="Age" name="eAge"><br>
+        <input type="text" class="form-control" placeholder="Dob" name="eDob"><br>
+        <input type="text" class="form-control" placeholder="Blood_Group" name="eBlood"><br>
+        <input type="text" class="form-control" placeholder="Address" name="eAddress"><br>
+        <input type="text" class="form-control" placeholder="Contact_Number" name="eNumber"><br>
+        <input type="text" class="form-control" placeholder="Email" name="eEmail"><br>
         <button type="submit" class="btn btn-primary">edit</button>
     </form>
 </div></div>
