@@ -49,6 +49,7 @@ public class PageController {
         for(Login login:logins){
             if(login.getlogin_id().equals(Id) && login.getpassword().equals(password)){
                 modelAndView.addObject("ID",login.getlogin_id());
+                modelAndView.addObject(login);
                 modelAndView.setViewName("student");
                 return modelAndView;
             }

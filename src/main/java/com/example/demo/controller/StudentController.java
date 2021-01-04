@@ -66,6 +66,7 @@ public class StudentController {
         modelAndView.addObject("Address",student.getAddress());
         modelAndView.addObject("Number",student.getContact_number());
         modelAndView.addObject("Email",student.getEmail());
+        modelAndView.addObject("ID",Id);
         modelAndView.setViewName("student");
         return modelAndView;
     }
