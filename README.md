@@ -8,6 +8,7 @@
 - [x] Mybatis
 - [x] swagger
 - [x] BootStrap
+- [x] Thymeleaf
 
 swagger接口试调页面为：
 http://localhost:8080/swagger-ui.html
