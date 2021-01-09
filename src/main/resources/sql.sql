@@ -9,7 +9,7 @@ create table student(
                         blood_group varchar(4) not null ,
                         address varchar(60) not null ,
                         contact_number varchar(20) not null ,
-                        email varchar(20)
+                        email varchar(40)
 );
 create table login(
                       login_id varchar(40) primary key ,

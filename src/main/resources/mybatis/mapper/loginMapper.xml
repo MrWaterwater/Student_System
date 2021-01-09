@@ -10,6 +10,9 @@
     <select id="alogin" resultType="com.example.demo.pojo.Login">
         select * from login where login_id = "admin";
     </select>
+    <select id="slogin" resultType="int">
+        select count(*) from login where password = #{password} and login_id = #{login_id};
+    </select>
     <update id="editLogin" parameterType="com.example.demo.pojo.Login">
         update login set password = #{password} where login_id = #{login_id};
     </update>
