@@ -6,13 +6,15 @@ import com.example.demo.pojo.Student;
 import java.util.List;
 
 public interface AdministratorService {
-    int addStudent(Student student);
-    int addInformation(String Id);
-    int deleteStudent(String Id);
-    int deleteLogin(String Id);
-    int deleteRecord(String Id);
-    int deleteInformation(String Id);
-    int updateStudent(Student student);
+    void addStudent(Student student);
+    void addInformation(String Id);
+
+    void deleteStudent(String Id);
+    void deleteLogin(String Id);
+    void deleteRecord(String Id);
+    void deleteInformation(String Id);
+
+    void updateStudent(Student student);
 
     List<Student> selectAllStudents();
 

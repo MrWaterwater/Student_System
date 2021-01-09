@@ -1,13 +1,14 @@
 package com.example.demo.controller;
 
-import com.example.demo.pojo.*;
+import com.example.demo.pojo.Information;
+import com.example.demo.pojo.Leave_record;
+import com.example.demo.pojo.Login;
+import com.example.demo.pojo.Student;
 import com.example.demo.service.impl.AdministratorServiceImpl;
-import com.example.demo.service.impl.LoginServiceImpl;
 import com.example.demo.service.impl.StudentServiceImpl;
 import com.example.demo.util.DateUtil;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,8 +22,6 @@ public class StudentController {
     private AdministratorServiceImpl administratorService;
     @Autowired
     private StudentServiceImpl studentService;
-    @Autowired
-    private LoginServiceImpl loginService;
 
     @Autowired
     private Student student;
@@ -31,28 +30,14 @@ public class StudentController {
     @Autowired
     private Information information;
 
-    @ApiOperation("学生登录接口")
-    @PostMapping("/api/login")
-    public ResultBean<?> login(@RequestParam("Id") String id, @RequestParam("password") String password ){
-        ResultBean<?> result = new ResultBean<>();
-        Login l = new Login(id,password);
-        if (loginService.slogin(l) > 0){
-            result.setCode(ResultBean.SUCCESS);
-            return result;
-        }
-        result.setCode(ResultBean.FAIL);
-        result.setMsg("错误的用户名或密码");
-        return result;
-    }
-
     @ApiOperation("修改学生信息接口")
-    @PostMapping("/api/studentUpdate")
-    public ResultBean<?> update(@RequestParam("eId")String ID,@RequestParam("eName")String Name,
+    @RequestMapping("/studentUpdate")
+    public ModelAndView update(@RequestParam("eId")String ID,@RequestParam("eName")String Name,
                          @RequestParam("eBatch")String Batch,
                          @RequestParam("eAge")int Age,@RequestParam("eDob")String Dob,
                          @RequestParam("eBlood")String Blood,@RequestParam("eAddress")String Address,
                          @RequestParam("eNumber")String Number,@RequestParam("eEmail")String Email){
-        ResultBean<?> result = new ResultBean<>();
+        ModelAndView modelAndView = new ModelAndView();
         student.setId(ID);
         student.setName(Name);
         student.setBatch(Batch);
@@ -63,21 +48,32 @@ public class StudentController {
         student.setContact_number(Number);
         student.setAddress(Address);
         administratorService.updateStudent(student);
-        result.setCode(ResultBean.SUCCESS);
-        return result;
+        modelAndView.addObject("ID",ID);
+        modelAndView.setViewName("student");
+        return modelAndView;
     }
-    @ApiOperation("学生详细信息接口")
-    @PostMapping("/api/detail")
-    public ResultBean<?> detail(@RequestParam("ID")String Id)  {
-        ResultBean<Student> result = new ResultBean<>();
+    @ApiOperation("查看学生详细信息接口")
+    @RequestMapping("/detail")
+    public ModelAndView detail(@RequestParam("ID")String Id)  {
+        ModelAndView modelAndView = new ModelAndView();
         student = studentService.seeDetail(Id);
-        result.setData(student);
-        return result;
+        modelAndView.addObject("Id",student.getId());
+        modelAndView.addObject("Name",student.getName());
+        modelAndView.addObject("Batch",student.getBatch());
+        modelAndView.addObject("Age",student.getage());
+        modelAndView.addObject("Dob",student.getDOB());
+        modelAndView.addObject("Blood",student.getBlood_group());
+        modelAndView.addObject("Address",student.getAddress());
+        modelAndView.addObject("Number",student.getContact_number());
+        modelAndView.addObject("Email",student.getEmail());
+        modelAndView.addObject("ID",Id);
+        modelAndView.setViewName("student");
+        return modelAndView;
     }
     @ApiOperation("申请请假接口")
-    @PostMapping("/api/apply")
-    public ResultBean<?> apply(@RequestParam("ID")String id,@RequestParam("reason")String reason){
-        ResultBean<?> result = new ResultBean<>();
+    @RequestMapping("/apply")
+    public ModelAndView apply(@RequestParam("AId")String id,@RequestParam("reason")String reason){
+        ModelAndView modelAndView = new ModelAndView();
         Date date = new Date();
         record.setleave_time(date);
         record.setstudent_id(id);
@@ -85,8 +81,9 @@ public class StudentController {
         information.setStudent_id(id);
         studentService.applyLeave(record);
         studentService.updateInformation(information.getStudent_id());
-        result.setCode(ResultBean.SUCCESS);
-        return result;
+        modelAndView.addObject("ID",id);
+        modelAndView.setViewName("student");
+        return modelAndView;
     }
 
 }

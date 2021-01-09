@@ -27,75 +27,15 @@
              bottom: 0;
          }
     </style>
-    <script type="text/javascript">
-        function addStudent() {
-            params=$('#addStudent').serialize();
-            $.ajax({
-                type:"post",
-                url:"/api/add",
-                dataType:"json",
-                data:params,
-                async: false,
-                success:function (data) {
-                if (data.code === 0){
-                    alert(data.msg)
-                }else {
-                    alert("学生信息错误")
-                }
-
-                }
-
-            });
-        }
-
-        function updateStudent() {
-            params=$('#updateStudent').serialize();
-            $.ajax({
-                type:"post",
-                url:"/api/update",
-                dataType:"json",
-                data:params,
-                async: false,
-                success:function (data) {
-                    if (data.code === 0) {
-                        alert(data.msg)
-                    }
-                    else {
-                            alert("学生信息错误")
-                        }
-                }
-
-            });
-        }
-        function deleteStudent() {
-            params=$('#deleteStudent').serialize();
-            $.ajax({
-                type:"post",
-                url:"/api/delete",
-                dataType:"json",
-                data:params,
-                async: false,
-                success:function (data) {
-                    if (data.code === 0) {
-                        alert(data.msg)
-                    }
-                    else {
-                        alert("学生信息错误")
-                    }
-                }
-
-            });
-        }
-    </script>
 </head>
 <body style="text-align: center">
 <div class="main">
-<form id="deleteStudent" action="javascript:deleteStudent()" method="post" class="form-inline">
+<form action="/delete" method="post" class="form-inline">
 <input class="form-control" type="text" placeholder="The Id you want to delete." name="dID"><button type="submit" class="btn btn-danger m" >Delete</button>
 </form>
 <br>
 <div class="col-lg-6">
-<form id="addStudent" method="post" class="form-horizontal" action="javascript:addStudent()" style="margin: 20px;" >
+<form method="post" class="form-horizontal" action="/add" style="margin: 20px;" >
     <input type="text" class="form-control" placeholder="Id" name="aId"><br>
     <input type="text" class="form-control" placeholder="Name" name="aName"><br>
     <input type="text" class="form-control" placeholder="Password" name="apassword"><br>
@@ -110,7 +50,7 @@
 </form>
 </div>
 <div class="col-lg-6">
-    <form id="updateStudent" method="post" class="form-horizontal" action="javascript:updateStudent()" style="margin: 20px;" >
+    <form method="post" class="form-horizontal" action="/update" style="margin: 20px;" >
         <input type="text" class="form-control" placeholder="Id" name="eId"><br>
         <input type="text" class="form-control" placeholder="Name" name="eName"><br>
         <input type="text" class="form-control" placeholder="Batch" name="eBatch"><br>

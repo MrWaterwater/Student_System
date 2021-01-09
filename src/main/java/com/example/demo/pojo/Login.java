@@ -2,13 +2,9 @@ package com.example.demo.pojo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("登录实体")
 public class Login {
     @ApiModelProperty("登录Id")
