@@ -25,6 +25,7 @@
         update student
         <trim prefix="set">
             <if test="batch != null"> batch = #{batch},</if>
+            <if test="name != null"> name = #{name}, </if>
             <if test="age != null"> age = #{age},</if>
             <if test="dob != null"> dob = #{dob},</if>
             <if test="blood_group != null"> blood_group = #{blood_group},</if>

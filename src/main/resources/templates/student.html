@@ -29,65 +29,61 @@
 <body>
 <div class="contain main" style="text-align: center">
     <div id="text"></div>
-    <form method="post" action="/detail" >
-        <input name="ID" readonly="readonly" type="hidden" th:value="${ID}" />
-        <button class="btn btn-info" type="submit">获取信息</button>
-    </form>
 
     <div style="text-align: center" class="col-lg-6">
-        <form action="/studentUpdate" method="post" class="form-horizontal" style="margin: 20px">
+        <form id="formStudent" action="javascript:studentUpdate()" method="post" class="form-horizontal" style="margin: 20px">
             <div class="form-group">
                 <label class="col-sm-2 control-label">Id</label>
                 <div class="col-sm-4 col-lg-10">
-                    <input class="form-control" name="eId" th:value="${Id}" readonly="readonly">
+                    <input class="form-control" name="eId" th:value="${ID}" readonly="readonly">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-4 col-lg-10">
-                    <input class="form-control" name="eName" th:value="${Name}" readonly="readonly">
+                    <input class="form-control" name="eName"  readonly="readonly">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Batch</label>
                 <div class="col-sm-4 col-lg-10">
-                    <input class="form-control" name="eBatch" th:value="${Batch}" readonly="readonly">
+                    <input class="form-control" name="eBatch"  readonly="readonly">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Age</label>
                 <div class="col-sm-4 col-lg-10">
-                    <input class="form-control" name="eAge" th:value="${Age}">
+                    <input class="form-control" name="eAge">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Dob</label>
                 <div class="col-sm-4 col-lg-10">
-                    <input class="form-control" name="eDob" th:value="${Dob}">
+                    <input class="form-control" name="eDob" >
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Blood</label>
                 <div class="col-sm-4 col-lg-10">
-                    <input class="form-control" name="eBlood" th:value="${Blood}">
+                    <input class="form-control" name="eBlood" >
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Address</label>
                 <div class="col-sm-4 col-lg-10">
-                    <input class="form-control" name="eAddress" th:value="${Address}">
+                    <input class="form-control" name="eAddress" >
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Telephone</label>
                 <div class="col-sm-4 col-lg-10">
-                    <input class="form-control" name="eNumber" th:value="${Number}">
+                    <input class="form-control" name="eNumber" >
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-4 col-lg-10">
-                    <input class="form-control" name="eEmail" th:value="${Email}">
+                    <input class="form-control" name="eEmail" >
                 </div>
             </div>
 
@@ -95,8 +91,8 @@
         </form>
     </div>
     <div style="text-align: center;margin-top: 150px" class="col-lg-6" >
-        <form action="/apply" method="post" class="form-horizontal">
-            <input type="hidden" th:value="${Id}" name="AId"/>
+        <form id="Apply" action="javascript:Apply()" method="post" class="form-horizontal">
+            <input id="Aid" type="hidden" th:value="${ID}" name="ID"/>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Reason</label>
                 <div class="col-sm-4 col-lg-10">
@@ -107,5 +103,75 @@
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    function studentUpdate(){
+        params=$('#formStudent').serialize();
+        $.ajax({
+            type:"post",
+            url:"/api/studentUpdate",
+            dataType:"json",
+            data:params,
+            async: false,
+            success:function (data) {
+                if (data.code === 0) {
+                    alert(data.msg)
+
+                }
+                else {
+                    alert("学生信息错误")
+                }
+            }
+
+        });
+    }
+    function detail(){
+        params=$('#Aid').serialize();
+        $.ajax({
+            type:"post",
+            url:"/api/detail",
+            dataType:"json",
+            data:params,
+            async: false,
+            success:function (data) {
+                if (data.code === 0) {
+                    form = $("#formStudent")
+                    student = data.data
+                    document.querySelector("#formStudent > div:nth-child(2) > div > input").value = student.name;
+                    document.querySelector("#formStudent > div:nth-child(3) > div > input").value = student.batch;
+                    document.querySelector("#formStudent > div:nth-child(4) > div > input").value = student.age;
+                    document.querySelector("#formStudent > div:nth-child(5) > div > input").value = student.dob;
+                    document.querySelector("#formStudent > div:nth-child(6) > div > input").value = student.blood_group;
+                    document.querySelector("#formStudent > div:nth-child(7) > div > input").value = student.address;
+                    document.querySelector("#formStudent > div:nth-child(8) > div > input").value = student.contact_number;
+                    document.querySelector("#formStudent > div:nth-child(9) > div > input").value = student.email;
+                }
+                else {
+                    alert("信息错误")
+                }
+            }
+
+        });
+    }
+    function Apply() {
+        params=$('#Apply').serialize();
+        $.ajax({
+            type:"post",
+            url:"/api/apply",
+            dataType:"json",
+            data:params,
+            async: false,
+            success:function (data) {
+                if (data.code === 0) {
+                    alert(data.msg)
+                }
+                else {
+                    alert("信息错误")
+                }
+            }
+
+        });
+    }
+    detail()
+</script>
 </body>
 </html>

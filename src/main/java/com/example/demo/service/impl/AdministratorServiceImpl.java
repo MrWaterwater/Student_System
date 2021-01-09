@@ -13,38 +13,38 @@ public class AdministratorServiceImpl implements AdministratorService {
     @Autowired
     private AdministratorMapper administratorMapper;
     @Override
-    public void addStudent(Student student) {
-        administratorMapper.addStudent(student);
+    public int addStudent(Student student) {
+        return administratorMapper.addStudent(student);
     }
 
     @Override
-    public void addInformation(String Id) {
-        administratorMapper.addInformation(Id);
+    public int addInformation(String Id) {
+        return administratorMapper.addInformation(Id);
     }
 
     @Override
-    public void deleteStudent(String Id) {
-        administratorMapper.deleteStudent(Id);
+    public int deleteStudent(String Id) {
+        return administratorMapper.deleteStudent(Id);
     }
 
     @Override
-    public void updateStudent(Student student) {
-        administratorMapper.updateStudent(student);
+    public int updateStudent(Student student) {
+        return administratorMapper.updateStudent(student);
     }
 
     @Override
-    public void deleteLogin(String Id) {
-        administratorMapper.deleteLogin(Id);
+    public int deleteLogin(String Id) {
+        return administratorMapper.deleteLogin(Id);
     }
 
     @Override
-    public void deleteRecord(String Id) {
-        administratorMapper.deleteRecord(Id);
+    public int deleteRecord(String Id) {
+        return administratorMapper.deleteRecord(Id);
     }
 
     @Override
-    public void deleteInformation(String Id) {
-        administratorMapper.deleteInformation(Id);
+    public int deleteInformation(String Id) {
+        return administratorMapper.deleteInformation(Id);
     }
 
     @Override
